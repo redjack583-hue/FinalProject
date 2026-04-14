@@ -1,0 +1,149 @@
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 20% 99%;
+    --foreground: 20 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 15% 15%;
+
+    --primary: 16 75% 48%;
+    --primary-foreground: 40 20% 99%;
+
+    --secondary: 180 25% 96%;
+    --secondary-foreground: 180 40% 20%;
+
+    --muted: 30 10% 96%;
+    --muted-foreground: 20 5% 45%;
+
+    --accent: 38 90% 55%;
+    --accent-foreground: 20 15% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 92%;
+    --input: 30 15% 92%;
+    --ring: 16 75% 48%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 30 20% 98%;
+    --sidebar-foreground: 180 40% 20%;
+    --sidebar-primary: 16 75% 48%;
+    --sidebar-primary-foreground: 40 20% 99%;
+    --sidebar-accent: 180 25% 94%;
+    --sidebar-accent-foreground: 180 40% 15%;
+    --sidebar-border: 30 15% 92%;
+    --sidebar-ring: 16 75% 48%;
+
+    --shadow-card: 0 2px 8px -1px rgba(0, 0, 0, 0.05), 0 1px 3px -1px rgba(0, 0, 0, 0.03);
+    --shadow-card-hover: 0 12px 24px -6px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+    --shadow-elevated: 0 20px 48px -12px rgba(0, 0, 0, 0.12);
+    
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.3);
+  }
+
+  .dark {
+    --background: 20 15% 10%;
+    --foreground: 40 20% 98%;
+
+    --card: 20 15% 12%;
+    --card-foreground: 40 20% 98%;
+
+    --popover: 20 15% 12%;
+    --popover-foreground: 40 20% 98%;
+
+    --primary: 16 85% 55%;
+    --primary-foreground: 40 20% 99%;
+
+    --secondary: 20 15% 18%;
+    --secondary-foreground: 40 20% 98%;
+
+    --muted: 20 15% 18%;
+    --muted-foreground: 20 5% 65%;
+
+    --accent: 38 90% 60%;
+    --accent-foreground: 20 15% 15%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 40 20% 98%;
+
+    --border: 20 15% 20%;
+    --input: 20 15% 20%;
+    --ring: 16 85% 55%;
+
+    --sidebar-background: 20 15% 11%;
+    --sidebar-foreground: 40 20% 96%;
+    --sidebar-primary: 16 85% 55%;
+    --sidebar-primary-foreground: 40 20% 99%;
+    --sidebar-accent: 20 15% 16%;
+    --sidebar-accent-foreground: 40 20% 98%;
+    --sidebar-border: 20 15% 18%;
+    --sidebar-ring: 16 85% 55%;
+
+    --glass-bg: rgba(0, 0, 0, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-primary/20 selection:text-primary;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased transition-colors duration-300;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-lg border border-white/20;
+  }
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-lg border border-white/10;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.12);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(251, 146, 60, 0.8);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(251, 146, 60, 1);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(251, 146, 60, 0.8) rgba(15, 23, 42, 0.12);
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|d:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\tbayindigenoussupporthub.api\\tbayindigenoussupporthub.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|d:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\tbayindigenoussupporthub.api\\tbayindigenoussupporthub.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|d:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\tbayindigenoussupporthub.api\\tbayindigenoussupporthub.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|d:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\tbayindigenoussupporthub.api\\tbayindigenoussupporthub.api\\dtos\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|solutionrelative:dtos\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|d:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\tbayindigenoussupporthub.api\\tbayindigenoussupporthub.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|d:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\tbayindigenoussupporthub.api\\tbayindigenoussupporthub.api\\dtos\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|solutionrelative:dtos\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|d:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\tbayindigenoussupporthub.api\\tbayindigenoussupporthub.api\\dtos\\verifyotprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|solutionrelative:dtos\\verifyotprequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|d:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\tbayindigenoussupporthub.api\\tbayindigenoussupporthub.api\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|solutionrelative:services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|d:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\tbayindigenoussupporthub.api\\tbayindigenoussupporthub.api\\migrations\\20260217181226_addotptable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{877FC480-F3C2-4ED4-943C-3F820257A331}|TbayIndigenousSupportHub.API.csproj|solutionrelative:migrations\\20260217181226_addotptable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserResponseDto.cs",
+              "DocumentMoniker": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\DTOs\\UserResponseDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\UserResponseDto.cs",
+              "ToolTip": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\DTOs\\UserResponseDto.cs",
+              "RelativeToolTip": "DTOs\\UserResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:41:24.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-13T08:41:24.038Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\DTOs\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\LoginRequest.cs",
+              "ToolTip": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\DTOs\\LoginRequest.cs",
+              "RelativeToolTip": "DTOs\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:41:24.042Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "Services\\EmailService.cs",
+              "ToolTip": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Services\\EmailService.cs",
+              "RelativeToolTip": "Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:41:24.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAOkAAAAAAAAAAAArwPIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:41:24.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGoAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:41:24.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "VerifyOtpRequest.cs",
+              "DocumentMoniker": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\DTOs\\VerifyOtpRequest.cs",
+              "RelativeDocumentMoniker": "DTOs\\VerifyOtpRequest.cs",
+              "ToolTip": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\DTOs\\VerifyOtpRequest.cs",
+              "RelativeToolTip": "DTOs\\VerifyOtpRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:41:24.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAwwCMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:41:23.806Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20260217181226_AddOtpTable.cs",
+              "DocumentMoniker": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Migrations\\20260217181226_AddOtpTable.cs",
+              "RelativeDocumentMoniker": "Migrations\\20260217181226_AddOtpTable.cs",
+              "ToolTip": "D:\\tbay\\tbaysupporthub\\tbaysupporthub\\tbay-project\\TbayIndigenousSupportHub.API\\TbayIndigenousSupportHub.API\\Migrations\\20260217181226_AddOtpTable.cs",
+              "RelativeToolTip": "Migrations\\20260217181226_AddOtpTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T08:41:24.061Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
