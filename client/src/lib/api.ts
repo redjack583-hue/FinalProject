@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://localhost:7045/api"; // Updated to match running port
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export async function apiFetch<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const token = localStorage.getItem("admin_token");

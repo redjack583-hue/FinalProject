@@ -107,9 +107,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policyBuilder =>
         {
-            policyBuilder.WithOrigins("http://localhost:5173", "http://localhost:8080", "http://localhost:8081")
-                         .AllowAnyHeader()
-                         .AllowAnyMethod();
+            
+
+            policyBuilder.AllowAnyOrigin()
+             .AllowAnyHeader()
+             .AllowAnyMethod();
         });
 });
 
@@ -118,11 +120,11 @@ var app = builder.Build();
 app.UseMiddleware<TbayIndigenousSupportHub.API.Middleware.ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{ }
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 app.UseHttpsRedirection();
 
@@ -135,7 +137,15 @@ app.UseAuthorization();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();
+    
+    try
+    {
+        db.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
 
     // 0. Seed Filter Options
     if (!db.FilterOptions.Any())

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TbayIndigenousSupportHub.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f746737a66fa34d4bb8333b775da977e5167bc4a")]
 [assembly: System.Reflection.AssemblyProductAttribute("TbayIndigenousSupportHub.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TbayIndigenousSupportHub.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
