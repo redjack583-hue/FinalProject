@@ -1,17 +1,36 @@
 import { useState } from "react";
-import { type Event } from "@/data/mockData"; // updated
 import { Plus, Pencil, Trash2, X } from "lucide-react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import { toast } from "sonner";
+import { formatEventDate } from "@/lib/date";
+
+type EventRecord = {
+  eventId: number | string;
+  eventTitle: string;
+  eventType: string;
+  eventDate: string;
+  location: string;
+  description: string;
+};
+
+type EventForm = Partial<EventRecord>;
+
+const eventFields = ["eventTitle", "eventType", "eventDate", "location", "description"] as const;
+
+const getDefaultEvent = (): EventForm => ({
+  eventTitle: "",
+  eventType: "",
+  eventDate: new Date().toISOString().split("T")[0],
+  location: "",
+  description: "",
+});
 
 export default function AdminEvents() {
   const queryClient = useQueryClient();
-  const [editing, setEditing] = useState<any | null>(null);
+  const [editing, setEditing] = useState<EventRecord | null>(null);
   const [showForm, setShowForm] = useState(false);
-
-  const empty: any = { eventTitle: "", eventType: "", eventDate: new Date().toISOString().split('T')[0], location: "", description: "" };
-  const [form, setForm] = useState<any>(empty);
+  const [form, setForm] = useState<EventForm>(getDefaultEvent);
 
   const { data: items = [], isLoading } = useQuery({
     queryKey: ["events"],
@@ -19,7 +38,11 @@ export default function AdminEvents() {
   });
 
   const saveMutation = useMutation({
-    mutationFn: (data: any) => editing ? api.events.update(editing.eventId, data) : api.events.create(data),
+    mutationFn: (data: EventForm) => (
+      editing
+        ? api.events.update(String(editing.eventId), data)
+        : api.events.create(data)
+    ),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["events"] });
       setShowForm(false);
@@ -29,7 +52,7 @@ export default function AdminEvents() {
   });
 
   const deleteMutation = useMutation({
-    mutationFn: (id: any) => api.events.delete(id),
+    mutationFn: (id: number | string) => api.events.delete(String(id)),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["events"] });
       toast.success("Event deleted");
@@ -37,9 +60,13 @@ export default function AdminEvents() {
     onError: () => toast.error("Failed to delete event"),
   });
 
-  const openAdd = () => { setForm(empty); setEditing(null); setShowForm(true); };
-  const openEdit = (e: any) => { setForm({ ...e, eventDate: e.eventDate?.split('T')[0] }); setEditing(e); setShowForm(true); };
-  const handleDelete = (id: any) => { if (confirm("Delete this event?")) deleteMutation.mutate(id); };
+  const openAdd = () => { setForm(getDefaultEvent()); setEditing(null); setShowForm(true); };
+  const openEdit = (event: EventRecord) => {
+    setForm({ ...event, eventDate: event.eventDate?.split("T")[0] });
+    setEditing(event);
+    setShowForm(true);
+  };
+  const handleDelete = (id: number | string) => { if (confirm("Delete this event?")) deleteMutation.mutate(id); };
   const handleSave = () => saveMutation.mutate(form);
 
   return (
@@ -63,10 +90,10 @@ export default function AdminEvents() {
           <tbody>
             {isLoading ? (
               <tr><td colSpan={4} className="py-10 text-center">Loading...</td></tr>
-            ) : items.map((e: any) => (
+              ) : items.map((e: EventRecord) => (
               <tr key={e.eventId} className="border-b last:border-0 hover:bg-secondary/30 transition-colors">
                 <td className="px-4 py-3 text-foreground">{e.eventTitle}</td>
-                <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">{e.eventDate ? new Date(e.eventDate).toLocaleDateString() : "TBD"}</td>
+                <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">{formatEventDate(e.eventDate)}</td>
                 <td className="hidden px-4 py-3 text-muted-foreground lg:table-cell">{e.location}</td>
                 <td className="px-4 py-3 text-right">
                   <button onClick={() => openEdit(e)} className="mr-2 rounded-md p-1.5 text-muted-foreground hover:bg-secondary hover:text-foreground"><Pencil className="h-4 w-4" /></button>
@@ -85,7 +112,7 @@ export default function AdminEvents() {
               <button onClick={() => setShowForm(false)} className="text-muted-foreground hover:text-foreground"><X className="h-4 w-4" /></button>
             </div>
             <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {(["eventTitle", "eventType", "eventDate", "location", "description"] as const).map((field) => (
+              {eventFields.map((field) => (
                 <div key={field} className={field === "description" ? "sm:col-span-2" : ""}>
                   <label className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70">{field.replace("eventTitle", "Title").replace("eventType", "Type")}</label>
                   <input 

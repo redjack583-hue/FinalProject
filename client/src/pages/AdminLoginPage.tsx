@@ -8,7 +8,7 @@ export default function AdminLoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [otp, setOtp] = useState("");
-  const [step, setStep] = useState(1); // 1: Login, 2: OTP
+  const [step, setStep] = useState(1); // 1 Login, 2 OTP
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 

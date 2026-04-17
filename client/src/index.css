@@ -34,7 +34,7 @@
     --input: 30 15% 92%;
     --ring: 16 75% 48%;
 
-    --radius: 1rem;
+    --radius: 0.5rem;
 
     --sidebar-background: 30 20% 98%;
     --sidebar-foreground: 180 40% 20%;
@@ -45,9 +45,9 @@
     --sidebar-border: 30 15% 92%;
     --sidebar-ring: 16 75% 48%;
 
-    --shadow-card: 0 2px 8px -1px rgba(0, 0, 0, 0.05), 0 1px 3px -1px rgba(0, 0, 0, 0.03);
-    --shadow-card-hover: 0 12px 24px -6px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-    --shadow-elevated: 0 20px 48px -12px rgba(0, 0, 0, 0.12);
+    --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.05);
+    --shadow-card-hover: 0 6px 16px rgba(0, 0, 0, 0.08);
+    --shadow-elevated: 0 12px 32px rgba(0, 0, 0, 0.12);
     
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(255, 255, 255, 0.3);

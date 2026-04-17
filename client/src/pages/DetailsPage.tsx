@@ -1,14 +1,42 @@
 import { useParams, Link } from "react-router-dom";
 import { PublicLayout } from "@/components/PublicLayout";
 import { LocationMap } from "@/components/LocationMap";
-import { ArrowLeft, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { ArrowLeft, MapPin, Phone, Mail, Clock, type LucideIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
+import { formatEventDate } from "@/lib/date";
+
+type DetailRecord = {
+  serviceName?: string;
+  businessName?: string;
+  eventTitle?: string;
+  description?: string;
+  category?: string;
+  eventType?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  website?: string;
+  location?: string;
+  eventDate?: string;
+};
+
+type DetailItem = {
+  title?: string;
+  description?: string;
+  badge?: string;
+};
+
+type DetailField = {
+  icon: LucideIcon;
+  label: string;
+  value: string;
+};
 
 export default function DetailsPage() {
   const { type, id } = useParams<{ type: string; id: string }>();
 
-  const { data: rawItem, isLoading } = useQuery({
+  const { data: rawItem, isLoading } = useQuery<DetailRecord>({
     queryKey: ["item", type, id],
     queryFn: () => {
       if (type === "services") return api.services.getById(id!);
@@ -29,8 +57,8 @@ export default function DetailsPage() {
     );
   }
 
-  let item: any = null;
-  let fields: { icon: any; label: string; value: string }[] = [];
+  let item: DetailItem | null = null;
+  const fields: DetailField[] = [];
   let address: string | undefined = undefined;
 
   if (rawItem) {
@@ -54,8 +82,7 @@ export default function DetailsPage() {
       if (rawItem.email) fields.push({ icon: Mail, label: "Email", value: rawItem.email });
     } else if (type === "events") {
       item = { title: rawItem.eventTitle, description: rawItem.description, badge: rawItem.eventType };
-      const dateStr = rawItem.eventDate ? new Date(rawItem.eventDate).toLocaleDateString() : "TBD";
-      fields.push({ icon: Clock, label: "Date", value: dateStr });
+      fields.push({ icon: Clock, label: "Date", value: formatEventDate(rawItem.eventDate) });
       if (rawItem.address) {
         fields.push({ icon: MapPin, label: "Address", value: rawItem.address });
         address = rawItem.address;

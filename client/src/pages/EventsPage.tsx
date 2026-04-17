@@ -4,6 +4,17 @@ import { SearchBar } from "@/components/SearchBar";
 import { ContentCard } from "@/components/ContentCard";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
+import { formatEventDate } from "@/lib/date";
+
+type EventRecord = {
+  eventId: number | string;
+  eventTitle: string;
+  eventType?: string;
+  eventDate?: string;
+  address?: string;
+  location?: string;
+  description?: string;
+};
 
 export default function EventsPage() {
   const [search, setSearch] = useState("");
@@ -14,7 +25,7 @@ export default function EventsPage() {
   });
 
   const filtered = useMemo(() => {
-    return events.filter((e: any) => {
+    return events.filter((e: EventRecord) => {
       return !search || e.eventTitle.toLowerCase().includes(search.toLowerCase()) || (e.description && e.description.toLowerCase().includes(search.toLowerCase()));
     });
   }, [search, events]);
@@ -40,8 +51,15 @@ export default function EventsPage() {
           <p className="py-12 text-center text-muted-foreground">No events found.</p>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((e) => (
-              <ContentCard key={e.eventId} title={e.eventTitle} description={e.description} badge={e.eventType} meta={`${e.eventDate} · ${e.address || e.location || 'TBA'}`} to={`/events/${e.eventId}`} />
+            {filtered.map((e: EventRecord) => (
+              <ContentCard
+                key={e.eventId}
+                title={e.eventTitle}
+                description={e.description || ""}
+                badge={e.eventType}
+                meta={`${formatEventDate(e.eventDate)} · ${e.address || e.location || "TBA"}`}
+                to={`/events/${e.eventId}`}
+              />
             ))}
           </div>
         )}
