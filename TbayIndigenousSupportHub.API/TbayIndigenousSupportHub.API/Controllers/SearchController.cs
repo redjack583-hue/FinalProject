@@ -16,6 +16,23 @@ namespace TbayIndigenousSupportHub.API.Controllers
             _searchService = searchService;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<ApiResponse<object>>> Search(string? q, string? category, string? type)
+        {
+            var businesses = await _searchService.SearchBusinessesAsync(q, category);
+            var events = await _searchService.SearchEventsAsync(q, type);
+            var services = await _searchService.SearchServicesAsync(q, category);
+
+            var result = new
+            {
+                businesses,
+                events,
+                services
+            };
+
+            return Ok(ApiResponse<object>.SuccessResponse(result));
+        }
+
         [HttpGet("businesses")]
         public async Task<ActionResult<ApiResponse<IEnumerable<Business>>>> SearchBusinesses(string? q, string? category)
         {

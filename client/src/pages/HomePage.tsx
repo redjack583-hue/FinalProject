@@ -6,11 +6,57 @@ import { ContentCard } from "@/components/ContentCard";
 import { Briefcase, Building2, Calendar, ArrowRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
+import { formatEventDate } from "@/lib/date";
+
+type FeaturedService = {
+  id?: number | string;
+  serviceId?: number | string;
+  name: string;
+  description: string;
+  category?: string;
+};
+
+type FeaturedBusiness = {
+  id?: number | string;
+  businessId?: number | string;
+  name: string;
+  description: string;
+  category?: string;
+};
+
+type FeaturedEvent = {
+  id?: number | string;
+  eventId?: number | string;
+  title?: string;
+  eventTitle?: string;
+  description?: string;
+  category?: string;
+  eventType?: string;
+  date?: string;
+  eventDate?: string;
+  location?: string;
+  address?: string;
+};
 
 const quickCards = [
-  { title: "Find Services", description: "Access health, education, legal, and community support services.", icon: Briefcase, to: "/services" },
-  { title: "Explore Businesses", description: "Discover Indigenous-owned businesses in Thunder Bay.", icon: Building2, to: "/businesses" },
-  { title: "View Events", description: "Stay connected with community events and gatherings.", icon: Calendar, to: "/events" },
+  {
+    title: "Find Services",
+    description: "Access health, education, legal, and community support services.",
+    icon: Briefcase,
+    to: "/services",
+  },
+  {
+    title: "Explore Businesses",
+    description: "Discover Indigenous-owned businesses in Thunder Bay.",
+    icon: Building2,
+    to: "/businesses",
+  },
+  {
+    title: "View Events",
+    description: "Stay connected with community events and gatherings.",
+    icon: Calendar,
+    to: "/events",
+  },
 ];
 
 export default function HomePage() {
@@ -24,21 +70,15 @@ export default function HomePage() {
     <PublicLayout>
       {/* Hero */}
       <section className="relative overflow-hidden bg-background py-24 md:py-32">
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] h-[40%] w-[40%] rounded-full bg-primary/5 blur-[120px]" />
-          <div className="absolute bottom-[-10%] right-[-10%] h-[40%] w-[40%] rounded-full bg-accent/10 blur-[120px]" />
-          <div className="absolute top-[20%] right-[10%] h-[30%] w-[30%] rounded-full bg-secondary/30 blur-[100px]" />
-        </div>
-        
-        <div className="container relative z-10 text-center animate-fade-in">
-          <h1 className="text-4xl leading-[1.1] md:text-6xl lg:text-7-xl">
+        <div className="container text-center">
+          <h1 className="text-4xl leading-[1.1] md:text-6xl lg:text-7xl">
             Thunder Bay Indigenous<br />
             <span className="text-gradient">Support Hub</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
             Your gateway to Indigenous services, businesses, and community events in Thunder Bay. Find what you need, all in one place.
           </p>
-          <div className="mx-auto mt-10 max-w-xl transition-transform duration-500 hover:scale-[1.01]">
+          <div className="mx-auto mt-10 max-w-xl">
             <SearchBar value={search} onChange={setSearch} placeholder="Search services, businesses, or events..." />
           </div>
         </div>
@@ -47,20 +87,19 @@ export default function HomePage() {
       {/* Quick Access */}
       <section className="container -mt-12 mb-16 relative z-20">
         <div className="grid gap-6 md:grid-cols-3">
-          {quickCards.map((card, index) => (
+          {quickCards.map((card) => (
             <Link
               key={card.to}
               to={card.to}
-              style={{ animationDelay: `${index * 100}ms` }}
-              className="group flex flex-col items-start rounded-2xl border bg-card p-8 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover animate-fade-in"
+              className="group flex flex-col items-start rounded-lg border bg-card p-8 shadow-card transition-colors hover:border-primary/40 hover:bg-secondary/20"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/5 transition-colors group-hover:bg-primary/10">
-                <card.icon className="h-7 w-7 text-primary transition-transform group-hover:scale-110" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary/5">
+                <card.icon className="h-7 w-7 text-primary" />
               </div>
               <h3 className="mt-6 text-xl">{card.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{card.description}</p>
               <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                Explore <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                Explore <ArrowRight className="h-4 w-4" />
               </span>
             </Link>
           ))}
@@ -77,11 +116,11 @@ export default function HomePage() {
               <p className="mt-2 text-muted-foreground">Essential support for the local Indigenous community.</p>
             </div>
             <Link to="/services" className="group flex items-center gap-1 text-sm font-semibold text-primary">
-              View All <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              View All <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services?.slice(0, 3).map((s: any) => (
+            {services?.slice(0, 3).map((s: FeaturedService) => (
               <ContentCard key={s.id || s.serviceId} title={s.name} description={s.description} badge={s.category} to={`/services/${s.id || s.serviceId}`} />
             ))}
           </div>
@@ -95,11 +134,11 @@ export default function HomePage() {
               <p className="mt-2 text-muted-foreground">Support local Indigenous entrepreneurs and organizations.</p>
             </div>
             <Link to="/businesses" className="group flex items-center gap-1 text-sm font-semibold text-primary">
-              View All <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              View All <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {businesses?.slice(0, 3).map((b: any) => (
+            {businesses?.slice(0, 3).map((b: FeaturedBusiness) => (
               <ContentCard key={b.id || b.businessId} title={b.name} description={b.description} badge={b.category} to={`/businesses/${b.id || b.businessId}`} />
             ))}
           </div>
@@ -113,12 +152,19 @@ export default function HomePage() {
               <p className="mt-2 text-muted-foreground">Stay connected with your community gatherings.</p>
             </div>
             <Link to="/events" className="group flex items-center gap-1 text-sm font-semibold text-primary">
-              View All <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              View All <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {events?.slice(0, 3).map((e: any) => (
-              <ContentCard key={e.id || e.eventId} title={e.title} description={e.description} badge={e.category} meta={`${e.date} · ${e.location}`} to={`/events/${e.id || e.eventId}`} />
+            {events?.slice(0, 3).map((e: FeaturedEvent) => (
+              <ContentCard
+                key={e.id || e.eventId}
+                title={e.title || e.eventTitle || ""}
+                description={e.description || ""}
+                badge={e.category || e.eventType}
+                meta={`${formatEventDate(e.date || e.eventDate)} · ${e.address || e.location || "TBA"}`}
+                to={`/events/${e.id || e.eventId}`}
+              />
             ))}
           </div>
         </section>

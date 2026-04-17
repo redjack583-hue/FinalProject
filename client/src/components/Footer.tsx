@@ -11,10 +11,9 @@ export function Footer() {
     <footer className="border-t bg-card">
       <div className="container py-10">
         <div className="grid gap-8 md:grid-cols-3">
-          
           <div>
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary">
                 <span className="font-display text-sm text-primary-foreground">TB</span>
               </div>
               <span className="font-display text-lg text-foreground">
@@ -55,7 +54,6 @@ export function Footer() {
               <p>Email: tbaysupporthub@gmail.com</p>
             </div>
           </div>
-
         </div>
 
         <div className="mt-8 border-t pt-6 text-center text-xs text-muted-foreground">

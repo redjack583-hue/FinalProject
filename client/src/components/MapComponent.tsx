@@ -7,11 +7,11 @@ import { useEffect } from 'react';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
-let DefaultIcon = L.icon({
-    iconUrl: icon,
-    shadowUrl: iconShadow,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41]
+const DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
 });
 
 L.Marker.prototype.options.icon = DefaultIcon;
@@ -34,18 +34,17 @@ interface MapProps {
 // Component to handle auto-centering when items change
 function ChangeView({ center, zoom }: { center: [number, number], zoom: number }) {
   const map = useMap();
+
   useEffect(() => {
     map.setView(center, zoom);
   }, [center, zoom, map]);
+
   return null;
 }
 
 export default function MapComponent({ items, center = [48.3809, -89.2477], zoom = 12 }: MapProps) {
-  // If we have items, we could optionally calculate the actual center of items
-  // For now, defaulting to Thunder Bay center
-  
   return (
-    <div className="h-full w-full rounded-xl overflow-hidden border border-border shadow-sm z-0">
+    <div className="z-0 h-full w-full overflow-hidden rounded-lg border shadow-sm">
       <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} style={{ height: '100%', width: '100%' }}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -53,7 +52,7 @@ export default function MapComponent({ items, center = [48.3809, -89.2477], zoom
         />
         <ChangeView center={center} zoom={zoom} />
         {items.map((item) => (
-          item.latitude && item.longitude ? (
+          Number.isFinite(item.latitude) && Number.isFinite(item.longitude) && (
             <Marker key={item.id} position={[item.latitude, item.longitude]}>
               <Popup>
                 <div className="p-1">
@@ -63,7 +62,7 @@ export default function MapComponent({ items, center = [48.3809, -89.2477], zoom
                 </div>
               </Popup>
             </Marker>
-          ) : null
+          )
         ))}
       </MapContainer>
     </div>

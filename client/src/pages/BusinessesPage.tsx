@@ -7,6 +7,43 @@ import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import MapComponent from "@/components/MapComponent";
 
+type FilterOption = {
+  entityType: string;
+  filterType: string;
+  name: string;
+};
+
+type BusinessRecord = {
+  businessId: number | string;
+  businessName?: string;
+  description?: string;
+  category?: string;
+  phone?: string;
+  email?: string;
+  latitude?: number | string | null;
+  longitude?: number | string | null;
+  Latitude?: number | string | null;
+  Longitude?: number | string | null;
+  lat?: number | string | null;
+  lng?: number | string | null;
+};
+
+type BusinessMapItem = {
+  id: number | string;
+  name: string;
+  description?: string;
+  latitude: number;
+  longitude: number;
+  category?: string;
+};
+
+const thunderBayCenter: [number, number] = [48.3809, -89.2477];
+
+const toCoordinate = (value: unknown) => {
+  const coordinate = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(coordinate) ? coordinate : null;
+};
+
 export default function BusinessesPage() {
   const [search, setSearch] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -22,18 +59,57 @@ export default function BusinessesPage() {
   });
 
   const businessCategories = useMemo(() => 
-    allFilters.filter((f: any) => f.entityType === "Business" && f.filterType === "Category").map((f: any) => f.name),
+    allFilters
+      .filter((f: FilterOption) => f.entityType === "Business" && f.filterType === "Category")
+      .map((f: FilterOption) => f.name),
     [allFilters]
   );
 
   const filtered = useMemo(() => {
-    return businesses.filter((b: any) => {
+    return businesses.filter((b: BusinessRecord) => {
       const businessName = b.businessName || "";
       const matchSearch = !search || businessName.toLowerCase().includes(search.toLowerCase()) || (b.description && b.description.toLowerCase().includes(search.toLowerCase()));
       const matchCat = selectedCategories.length === 0 || selectedCategories.includes(b.category);
       return matchSearch && matchCat;
     });
   }, [search, selectedCategories, businesses]);
+
+  const mapItems = useMemo(() => {
+    return filtered.reduce<BusinessMapItem[]>((items, business) => {
+      const latitude = toCoordinate(business.latitude ?? business.Latitude ?? business.lat);
+      const longitude = toCoordinate(business.longitude ?? business.Longitude ?? business.lng);
+
+      if (latitude === null || longitude === null) return items;
+
+      items.push({
+        id: business.businessId,
+        name: business.businessName || "",
+        description: business.description,
+        latitude,
+        longitude,
+        category: business.category,
+      });
+
+      return items;
+    }, []);
+  }, [filtered]);
+
+  const mapCenter = useMemo<[number, number]>(() => {
+    if (mapItems.length === 0) return thunderBayCenter;
+
+    const totals = mapItems.reduce(
+      (sum, item) => ({
+        latitude: sum.latitude + item.latitude,
+        longitude: sum.longitude + item.longitude,
+      }),
+      { latitude: 0, longitude: 0 }
+    );
+
+    return [
+      totals.latitude / mapItems.length,
+      totals.longitude / mapItems.length,
+    ];
+  }, [mapItems]);
 
   return (
     <PublicLayout>
@@ -49,14 +125,9 @@ export default function BusinessesPage() {
             </div>
             <div className="w-full lg:w-[450px] h-[300px] shrink-0">
               <MapComponent 
-                items={filtered.map((b: any) => ({
-                  id: b.businessId,
-                  name: b.businessName,
-                  description: b.description,
-                  latitude: b.latitude,
-                  longitude: b.longitude,
-                  category: b.category
-                }))} 
+                items={mapItems}
+                center={mapCenter}
+                zoom={mapItems.length > 1 ? 11 : 13}
               />
             </div>
           </div>
@@ -82,7 +153,7 @@ export default function BusinessesPage() {
               <p className="py-12 text-center text-muted-foreground">No businesses found.</p>
             ) : (
               <div className="grid gap-6 sm:grid-cols-2">
-                {filtered.map((b) => (
+                {filtered.map((b: BusinessRecord) => (
                   <ContentCard
                     key={b.businessId}
                     title={b.businessName}
